@@ -47774,17 +47774,57 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      user: {},
       complete: false,
       stripeOptions: {
         // see https://stripe.com/docs/stripe.js#element-options for details
       }
     };
+  },
+  created: function created() {
+    var that = this;
+    axios.get('/api/user').then(function (res) {
+      that.user = res.data;
+    });
   },
 
 
@@ -47792,14 +47832,42 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   methods: {
     pay: function pay() {
+      var that = this;
       // createToken returns a Promise which resolves in a result object with
       // either a token or an error key.
       // See https://stripe.com/docs/api#tokens for the token object.
       // See https://stripe.com/docs/api#errors for the error object.
       // More general https://stripe.com/docs/stripe.js#stripe-create-token.
       Object(__WEBPACK_IMPORTED_MODULE_0_vue_stripe_elements_plus__["createToken"])().then(function (data) {
-        return console.log(data.token);
+        return axios.post('/api/subscription', { stripeToken: data.token.id }).then(function (res) {
+          alert('Payment method updated!');
+          that.user = res.data;
+        });
       });
+    },
+    update: function update() {
+      var that = this;
+      // createToken returns a Promise which resolves in a result object with
+      // either a token or an error key.
+      // See https://stripe.com/docs/api#tokens for the token object.
+      // See https://stripe.com/docs/api#errors for the error object.
+      // More general https://stripe.com/docs/stripe.js#stripe-create-token.
+      Object(__WEBPACK_IMPORTED_MODULE_0_vue_stripe_elements_plus__["createToken"])().then(function (data) {
+        return axios.post('/api/subscription/update', { stripeToken: data.token.id }).then(function (res) {
+          alert('Payment method updated!');
+          that.user = res.data;
+        });
+      });
+    },
+    stopSubscription: function stopSubscription() {
+      var that = this;
+      var con = confirm('Are you sure? Your data will be deleted after 90 days.');
+      if (con) {
+        axios.post('/api/subscription/stop').then(function (res) {
+          that.user = res.data;
+          alert('Subscription cancelled!');
+        });
+      }
     }
   }
 });
@@ -47813,48 +47881,134 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-8" }, [
-        _c("div", { staticClass: "card card-default" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _vm._v("Payment Information")
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "card-body" },
-            [
-              _c("card", {
-                staticClass: "stripe-card",
-                class: { complete: _vm.complete },
-                attrs: {
-                  stripe: "pk_test_vOqDwDXTRiUp8s6NODjI1R1z",
-                  options: _vm.stripeOptions
-                },
-                on: {
-                  change: function($event) {
-                    _vm.complete = $event.complete
-                  }
-                }
-              }),
+    !_vm.user.subscribed
+      ? _c("div", { staticClass: "row justify-content-center" }, [
+          _c("div", { staticClass: "col-md-8" }, [
+            _c("div", { staticClass: "card card-default" }, [
+              _c("div", { staticClass: "card-header" }, [
+                _vm._v("Payment Information")
+              ]),
               _vm._v(" "),
               _c(
-                "v-btn",
-                {
-                  attrs: { color: "error", disabled: !_vm.complete },
-                  on: { click: _vm.pay }
-                },
-                [_vm._v("Update Card Information")]
+                "div",
+                { staticClass: "card-body" },
+                [
+                  _c("card", {
+                    staticClass: "stripe-card form-control",
+                    class: { complete: _vm.complete },
+                    attrs: {
+                      stripe: "pk_test_vOqDwDXTRiUp8s6NODjI1R1z",
+                      options: _vm.stripeOptions
+                    },
+                    on: {
+                      change: function($event) {
+                        _vm.complete = $event.complete
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-success",
+                      attrs: { disabled: !_vm.complete },
+                      on: { click: _vm.pay }
+                    },
+                    [_vm._v("Update Card Information")]
+                  )
+                ],
+                1
               )
-            ],
-            1
+            ])
+          ])
+        ])
+      : _c("div", { staticClass: "row justify-content-center" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-8" }, [
+            _c("div", { staticClass: "card card-default" }, [
+              _c("div", { staticClass: "card-header" }, [
+                _vm._v("Payment Information")
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "card-body" },
+                [
+                  _vm._v(
+                    "\n                  Current card ending in " +
+                      _vm._s(_vm.user.last4) +
+                      "\n                  "
+                  ),
+                  _c("card", {
+                    staticClass: "stripe-card form-control",
+                    class: { complete: _vm.complete },
+                    attrs: {
+                      stripe: "pk_test_vOqDwDXTRiUp8s6NODjI1R1z",
+                      options: _vm.stripeOptions
+                    },
+                    on: {
+                      change: function($event) {
+                        _vm.complete = $event.complete
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-success",
+                      attrs: { disabled: !_vm.complete },
+                      on: { click: _vm.update }
+                    },
+                    [_vm._v("Update Card Information")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger",
+                      on: { click: _vm.stopSubscription }
+                    },
+                    [_vm._v("Stop Subscription")]
+                  )
+                ],
+                1
+              )
+            ])
+          ])
+        ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-8" }, [
+      _c("div", { staticClass: "card card-default" }, [
+        _c("div", { staticClass: "card-header" }, [
+          _vm._v("Access Your Backend")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _vm._v("\n                  Access your backend "),
+          _c(
+            "a",
+            { attrs: { href: "https://box.jyroneparkeremail.space/cloud" } },
+            [_vm._v("here")]
           )
         ])
       ])
     ])
-  ])
-}
-var staticRenderFns = []
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
