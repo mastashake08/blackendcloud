@@ -15,9 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes(['verify' => true]);
+Auth::routes(['verify' => false]);
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');;
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/pricing','HomeController@pricing')->name('pricing');
 Route::get('/features','HomeController@features')->name('features');
 Route::get('/contact','HomeController@contact')->name('contact');
