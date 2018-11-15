@@ -12,7 +12,7 @@
                        :options='stripeOptions'
                        @change='complete = $event.complete'
                      />
-                     <button class='pay-with-stripe' @click='pay' :disabled='!complete'>Pay with credit card</button>
+                     <v-btn color="error" @click='pay' :disabled='!complete'>Update Card Information</v-btn>
                     </div>
                 </div>
             </div>
@@ -21,7 +21,6 @@
 </template>
 
 <script>
-import { stripeKey, stripeOptions } from './stripeConfig.json'
 import { Card, createToken } from 'vue-stripe-elements-plus'
 
 export default {

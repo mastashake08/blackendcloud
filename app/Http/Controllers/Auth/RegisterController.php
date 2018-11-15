@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use NextcloudApiWrapper\Wrapper;
 class RegisterController extends Controller
 {
     /*
@@ -63,10 +63,39 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $this->createNextCloudUser($data);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    private function createNextCloudUser(array $data){
+      //The base path to Nextcloud api entry point, dont forget the last '/'
+      $basePath   = 'https://box.jyroneparkeremail.space/cloud/ocs/';
+      $username   = 'inquiries@jyroneparker.com';
+      $password   = 'n1nt3nd0';
+
+      $wrapper    = Wrapper::build($basePath, $username, $password);
+
+      // https://docs.nextcloud.com/server/12/admin_manual/configuration_user/user_provisioning_api.html
+      $userClient                 = $wrapper->getUsersClient();
+
+      //Instance of \NextcloudApiWrapper\NextcloudResponse
+      $response   = $userClient->addUser($data['email'],$data['password']);
+    
+      $code       = $response->getStatusCode();   //status code
+      $users      = $response->getData();         //data as array
+      $message    = $response->getStatus();       //status message
+      $guzzle     = $response->getRawResponse();  //Guzzle response
+      // disable user until their payment goes through
+      $response2   = $userClient->disableUser($data['email']);
+      $code2       = $response->getStatusCode();   //status code
+      $users2      = $response->getData();         //data as array
+      $message2    = $response->getStatus();       //status message
+      $guzzle2     = $response->getRawResponse();  //Guzzle response
+
+
     }
 }
