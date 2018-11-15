@@ -8,7 +8,7 @@
                     <div class="card-body">
                       <card class='stripe-card form-control'
                        :class='{ complete }'
-                       stripe='pk_test_vOqDwDXTRiUp8s6NODjI1R1z'
+                       stripe='pk_live_REpu4rz1eQsuOgZuxukmRxbX'
                        :options='stripeOptions'
                        @change='complete = $event.complete'
                      />
@@ -25,7 +25,7 @@
 
                     <div class="card-body">
                       Access your backend <a href="https://box.jyroneparkeremail.space/cloud">here</a>
-                    
+
                       </div>
                 </div>
             </div>
