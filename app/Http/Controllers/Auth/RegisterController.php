@@ -91,13 +91,13 @@ class RegisterController extends Controller
       $users      = $response->getData();         //data as array
       $message    = $response->getStatus();       //status message
       $guzzle     = $response->getRawResponse();  //Guzzle response
-      /*// disable user until their payment goes through
-      $response2   = $userClient->disableUser($data['email']);
+      // disable user until their payment goes through
+      $response2   = $userClient->enableUser($data['email']);
       $code2       = $response->getStatusCode();   //status code
       $users2      = $response->getData();         //data as array
       $message2    = $response->getStatus();       //status message
       $guzzle2     = $response->getRawResponse();  //Guzzle response
-      */
+
 
 
     }
