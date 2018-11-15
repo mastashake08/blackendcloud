@@ -23,6 +23,14 @@
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<meta property="og:title" content="Black End Cloud" />
+		<meta property="og:type" content="application" />
+		<meta property="og:url" content="{{url('/')}}" />
+		<meta property="og:image" content="{{url('/icon.png')}}" />
+		<meta property="og:description" content="{{env('APP_NAME')}} is the only black owned encrypted storage and communications platform for businesses.">
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@mastashake08" />
+		<meta name="twitter:creator" content="@mastashake08" />
 		<link rel="manifest" href="/manifest.json">
 		<meta name="msapplication-TileColor" content="#ffffff">
 		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
