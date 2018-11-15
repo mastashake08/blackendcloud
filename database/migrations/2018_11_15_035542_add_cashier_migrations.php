@@ -41,6 +41,7 @@ class AddCashierMigrations extends Migration
      */
     public function down()
     {
-        //
+
+        Schema::dropIfExists('subscriptions');
     }
 }

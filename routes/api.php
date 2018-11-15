@@ -43,7 +43,7 @@ Route::middleware('auth:api')->post('/subscription', function (Request $request)
 Route::middleware('auth:api')->post('/subscription/update', function (Request $request) {
     $user = $request->user();
     $user->updateCard($request->stripeToken);
-    
+
     return response()->json(new UserResource($user));
 });
 Route::middleware('auth:api')->post('/subscription/stop', function (Request $request) {
@@ -69,3 +69,7 @@ Route::middleware('auth:api')->post('/subscription/stop', function (Request $req
 
     return response()->json(new UserResource($user));
 });
+Route::post(
+    'stripe/webhook',
+    '\App\Http\Controllers\WebhookController@handleWebhook'
+);

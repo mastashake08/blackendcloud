@@ -68,6 +68,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'trial_ends_at' => now()->addDays(3),
         ]);
     }
 
@@ -84,7 +85,7 @@ class RegisterController extends Controller
 
       //Instance of \NextcloudApiWrapper\NextcloudResponse
       $response   = $userClient->addUser($data['email'],$data['password']);
-    
+
       $code       = $response->getStatusCode();   //status code
       $users      = $response->getData();         //data as array
       $message    = $response->getStatus();       //status message
