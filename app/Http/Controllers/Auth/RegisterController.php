@@ -63,13 +63,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $this->createNextCloudUser($data);
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'trial_ends_at' => now()->addDays(3),
         ]);
+        $this->createNextCloudUser($data);
+        return $user;
     }
 
     private function createNextCloudUser(array $data){
