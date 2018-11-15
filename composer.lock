@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "56a18d7415f46d9be01df169f58eed96",
+    "content-hash": "115fb6a4083bbaa330668d9a4011640b",
     "packages": [
         {
             "name": "defuse/php-encryption",
@@ -2815,6 +2815,60 @@
             "time": "2018-11-03T11:11:23+00:00"
         },
         {
+            "name": "symfony/options-resolver",
+            "version": "v3.4.18",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/options-resolver.git",
+                "reference": "1cf7d8e704a9cc4164c92e430f2dfa3e6983661d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/1cf7d8e704a9cc4164c92e430f2dfa3e6983661d",
+                "reference": "1cf7d8e704a9cc4164c92e430f2dfa3e6983661d",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5.9|>=7.0.8"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\OptionsResolver\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony OptionsResolver Component",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "config",
+                "configuration",
+                "options"
+            ],
+            "time": "2018-09-17T17:29:18+00:00"
+        },
+        {
             "name": "symfony/polyfill-ctype",
             "version": "v1.10.0",
             "source": {
@@ -3316,6 +3370,48 @@
                 "dump"
             ],
             "time": "2018-10-02T16:36:10+00:00"
+        },
+        {
+            "name": "sysmoh/nextcloud-api-wrapper",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sysmoh/nextcloud-api-wrapper.git",
+                "reference": "0df912f6fe4c74c989f4b4e07485f2ae2fd3f114"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sysmoh/nextcloud-api-wrapper/zipball/0df912f6fe4c74c989f4b4e07485f2ae2fd3f114",
+                "reference": "0df912f6fe4c74c989f4b4e07485f2ae2fd3f114",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.3",
+                "symfony/options-resolver": "^3.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NextcloudApiWrapper\\": "src/NextcloudApiWrapper"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "sysmoh",
+                    "email": "guillaume.hochet@gmail.com"
+                }
+            ],
+            "description": "A simple wrapper around nextcloud user provisioning api",
+            "keywords": [
+                "api",
+                "nextcloud",
+                "wrapper"
+            ],
+            "time": "2018-02-27T10:18:39+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
