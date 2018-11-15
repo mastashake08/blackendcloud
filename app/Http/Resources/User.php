@@ -17,8 +17,7 @@ class User extends JsonResource
         return [
           'id' => $this->id,
           'email' => $this->email,
-          'subscribed' => $this->subscribed('main'),
-          'trial' => $this->onGenericTrial(),
+          'subscribed' => $this->subscribed('main') || $this->onGenericTrial(),
           'last4' => $this->card_last_four
         ];
     }
