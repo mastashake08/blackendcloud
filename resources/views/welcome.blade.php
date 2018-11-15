@@ -56,7 +56,7 @@
 							<p>Every business needs cloud services. That being said your data should be completely owned by you and left alone. {{env('APP_NAME')}} offers a suite of productivity and office tools that allows you to seamlessly operate your business.</p>
 						</div>
 						<div class="col-6 col-12-medium imp-medium">
-							<span class="image fit"><img src="images/pic01.jpg" alt="" /></span>
+							<span class="image fit"><img src="https://images.pexels.com/photos/1181316/pexels-photo-1181316.jpeg?cs=srgb&dl=adult-business-data-1181316.jpg&fm=jpg" alt="" /></span>
 						</div>
 					</div>
 				</div>
@@ -100,7 +100,7 @@
 						<div class="col-4 col-12-medium">
 							<span class="image fit"><img src="images/pic02.jpg" alt="" /></span>
 							<h3>Simple pricing</h3>
-							<p>$19.99/mo standard fee gets you full access to the {{env('APP_NAME')}} system! </p>
+							<p>$20/mo standard fee gets you full access to the {{env('APP_NAME')}} system! </p>
 							<ul class="actions special">
 								<li><a href="{{url('/pricing')}}" class="button">More</a></li>
 							</ul>
