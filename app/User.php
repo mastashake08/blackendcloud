@@ -19,6 +19,7 @@ class User extends Authenticatable //implements MustVerifyEmail
     protected $fillable = [
         'name', 'email', 'password', 'trial_ends_at'
     ];
+    protected $dates = ['trial_ends_at'];
 
     /**
      * The attributes that should be hidden for arrays.
