@@ -35,7 +35,11 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                      <li><a class="nav-link" href="{{url('/about')}}">About</a></li>
+                      <li><a class="nav-link" href="{{url('/features')}}">Features</a></li>
+                      <li><a class="nav-link" href="{{url('/pricing')}}">Pricing</a></li>
+                      <li><a class="nav-link" href="{{url('/privacy')}}">Privacy</a></li>
+                      <li><a class="nav-link" href="{{url('/contact')}}">Contact</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
