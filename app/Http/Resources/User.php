@@ -18,7 +18,8 @@ class User extends JsonResource
           'id' => $this->id,
           'email' => $this->email,
           'subscribed' => $this->subscribed('main') || $this->onGenericTrial(),
-          'last4' => $this->card_last_four
+          'last4' => $this->card_last_four,
+          'is_admin' => $this->is_admin
         ];
     }
 }
